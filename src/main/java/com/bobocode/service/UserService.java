@@ -48,13 +48,7 @@ public class UserService {
 
         User user = getUserById(id);
         note.setId(generateId());
-        note.setUserId(id);
-
-        if (user.getNotes() == null) {
-            user.setNotes(new ArrayList<>());
-        }
-
-        user.getNotes().add(note);
+        user.addNote(note);
     }
 
     public Note getUserNoteById(String userId, String noteId) {
@@ -73,7 +67,7 @@ public class UserService {
     public void deleteUserNoteById(String userId, String noteId) {
         User user = getUserById(userId);
         Note note = getUserNoteById(userId, noteId);
-        user.getNotes().remove(note);
+        user.removeNote(note);
     }
 
     private String generateId() {

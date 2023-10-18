@@ -51,9 +51,9 @@ public class UserController {
         userService.deleteUserById(id);
     }
 
-    @PostMapping("/{id}/notes")
-    public ResponseEntity<?> createUserNote(@PathVariable String id, @RequestBody Note note) {
-        userService.createUserNote(id, note);
+    @PostMapping("/{userId}/notes")
+    public ResponseEntity<?> createUserNote(@PathVariable String userId, @RequestBody Note note) {
+        userService.createUserNote(userId, note);
         URI location = ServletUriComponentsBuilder.fromCurrentRequestUri()
                 .path("/{id}")
                 .buildAndExpand(note.getId())
